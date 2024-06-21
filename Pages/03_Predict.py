@@ -155,7 +155,7 @@ if __name__ == '__main__':
     else:
         if final_prediction.lower() == 'yes':
             # st.markdown(f'## Churn: {final_prediction}')
-            st.markdown(f'### Customer will leave 😞.')
+            st.markdown(f'### Customer will leave 😟.')
             st.markdown(f'## Probability: {final_probability:.2f}%')
             
         else:
