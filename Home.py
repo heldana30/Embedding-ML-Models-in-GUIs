@@ -1,11 +1,7 @@
 import streamlit as st
 
 # Set page configuration
-st.set_page_config(
-    page_title="Customer Churn Prediction",
-    page_icon="🔮",
-    layout="wide"
-)
+st.set_page_config(page_title="Home", page_icon="🏠",  layout="wide")
 
 # Add CSS for animations
 st.write("""
@@ -74,20 +70,20 @@ st.markdown('<div class="slide-in-top-animation"><h1>🚀 Welcome to Customer Ch
 # Content with different slide-in animations
 st.write('<div class="slide-in-bottom-animation"><h3>Unleash the power of machine learning to predict customer churn!</h3></div>', unsafe_allow_html=True)
 
-# About This App with slide-in-left animation
-# st.markdown('<div class="slide-in-right-animation">', unsafe_allow_html=True)
-st.markdown('<div class="slide-in-left-animation"><h4>About This App</h4></div>', unsafe_allow_html=True)
+# Home Page Content
+st.markdown('<div class="slide-in-right-animation"><h2>About This App</h2></div>', unsafe_allow_html=True)
 st.markdown("""
-    The Customer Churn Prediction App is designed to help businesses in the telecommunications industry predict whether a customer is likely to churn (leave the service). By leveraging machine learning techniques, this app provides valuable insights into customer behavior, allowing companies to take proactive measures to improve customer retention.
-    """)
-st.markdown('</div>', unsafe_allow_html=True)
+    <div class="slide-in-left-animation">
+        <p>The <span class="slide-in-bottom-animation">Customer Churn Prediction App</span> is designed to help businesses in the telecommunications industry predict whether a customer is likely to churn (leave the service). By leveraging machine learning techniques, this app provides valuable insights into customer behavior, allowing companies to take proactive measures to improve customer retention.</p>
+    </div>
+""", unsafe_allow_html=True)
 
 # Create columns for Key Features, How It Works, and Benefits
 col1, col2, col3 = st.columns(3)
 
 # Key Features with slide-in-right animation
 with col1:
-    st.markdown('<div class="  ">', unsafe_allow_html=True)
+    st.markdown('<div class="zoom-in-animation">', unsafe_allow_html=True)
     st.markdown("## Key Features")
     st.markdown("""
     - **Model Training:** Train various machine learning models, such as Logistic Regression, Random Forest, and XGBoost, to predict customer churn.

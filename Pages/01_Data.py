@@ -4,11 +4,8 @@ from streamlit_modal import Modal
 import os
 
 # Set page configuration
-st.set_page_config(
-    page_title="Customer Churn Prediction",
-    page_icon="🗂",
-    layout="wide"
-)
+st.set_page_config(page_title="Data", page_icon = '🗄️', layout="wide")
+
 st.title("Customer Churn Dataset")
 
 columns_description = {
@@ -34,24 +31,27 @@ columns_description = {
     "Churn": "Whether the customer churned or not (Yes or No)"
 }
 
+col1, col2 = st.columns(2)
+with col1:
 # Create a dropdown menu for column selection
-selected_column = st.selectbox("Select a column to see its description:", list(columns_description.keys()))
+    selected_column = st.selectbox("Select a column to see its description:", list(columns_description.keys()))
 
 # Display the description of the selected column
 st.markdown(f"**{selected_column}**: {columns_description[selected_column]}")
-
-def filter_columns(data):
+with col2:
+    def filter_columns(data):
     # Allow the user to select the data type to display
-    data_type = st.selectbox('Select Data type', [
+
+        data_type = st.selectbox('Select Data type', [
                              'All', 'Numeric Columns', 'Categorical Columns'])
 
-    if data_type == 'Numeric Columns':
-        data = data.select_dtypes(include=['number'])
-    elif data_type == 'Categorical Columns':
-        data = data.select_dtypes(include=['object', 'category'])
+        if data_type == 'Numeric Columns':
+            data = data.select_dtypes(include=['number'])
+        elif data_type == 'Categorical Columns':
+            data = data.select_dtypes(include=['object', 'category'])
 
     # Display the filtered data in Streamlit
-    st.write(data)
+        st.write(data)
 
 
 # Define the path to the dataset
@@ -71,15 +71,4 @@ else:
         filter_columns(data)
     except Exception as e:
         st.error(f"Error loading the file '{dataset_path}': {e}")
-
-# File uploader
-uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-
-if uploaded_file is not None:
-    try:
-        data = pd.read_csv(uploaded_file)
-        # Call the function to filter and display columns
-        filter_columns(data)
-    except Exception as e:
-        st.error(f"Error loading the uploaded file: {e}")
 
