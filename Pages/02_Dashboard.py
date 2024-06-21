@@ -464,15 +464,6 @@ def kpi_dash():
     with col1:    
         # Churn by Streaming Movies
         st.subheader("Churn by Streaming Movies")
-        # fig = plt.figure(figsize=(10, 6))
-        # ax = sns.countplot(data=filtered_data, x="streamingmovies", hue="churn", palette="Set3",
-        #                 order=filtered_data["streamingmovies"].value_counts().index)
-        # ax.set_ylabel('Count of Streaming Movies')
-        # for p in ax.patches:
-        #     ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), 
-        #                 ha='center', va='baseline', fontsize=10, color='black', xytext=(0, 1), 
-        #                 textcoords='offset points')
-        # st.pyplot(fig)
         streamingmovies_churn_counts = filtered_data.groupby(['streamingmovies', 'churn']).size().reset_index(name='count')
         # Create the Plotly figure
         fig = px.bar(streamingmovies_churn_counts, x='streamingmovies', y='count', color='churn',
@@ -484,42 +475,13 @@ def kpi_dash():
     with col2: 
         # Churn by Online Security
         st.subheader("Online Security & InternetService")
-        fig = plt.figure(figsize=(10, 6))
-        ax = sns.countplot(data=filtered_data, x="onlinesecurity", hue="churn", palette="Set1",
-                        order=filtered_data["internetservice"].value_counts().index)
-        ax.set_ylabel('Count of InternetService')
-        for p in ax.patches:
-            ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), 
-                        ha='center', va='baseline', fontsize=10, color='black', xytext=(0, 1), 
-                        textcoords='offset points')
-        st.pyplot(fig)
-
-    col1, col2 = st.columns(2)
-    with col1:
-    # Churn by Paperless Billing
-        st.subheader("Churn by Paperless Billing")
-        fig = plt.figure(figsize=(10, 6))
-        ax = sns.countplot(data=filtered_data, x="paperlessbilling", hue="churn", palette="Set2",
-                        order=filtered_data["paperlessbilling"].value_counts().index)
-        ax.set_ylabel('Count of Paperless Billing')
-        for p in ax.patches:
-            ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), 
-                        ha='center', va='baseline', fontsize=10, color='black', xytext=(0, 1), 
-                        textcoords='offset points')
-        st.pyplot(fig)
-
-    with col2:
-    # Churn by Streaming TV
-        st.subheader("Churn by Streaming TV")
-        fig = plt.figure(figsize=(10, 6))
-        ax = sns.countplot(data=filtered_data, x="streamingtv", hue="churn", palette="Set3",
-                        order=filtered_data["streamingtv"].value_counts().index)
-        ax.set_ylabel('Count of Streaming TV')
-        for p in ax.patches:
-            ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), 
-                        ha='center', va='baseline', fontsize=10, color='black', xytext=(0, 1), 
-                        textcoords='offset points')
-        st.pyplot(fig)
+        onlinesecurity_churn_counts = filtered_data.groupby(['onlinesecurity', 'churn']).size().reset_index(name='count')
+        # Create the Plotly figure
+        fig = px.bar(onlinesecurity_churn_counts, x='onlinesecurity', y='count', color='churn',
+                    category_orders={'onlinesecurity': filtered_data['internetservice'].value_counts().index.tolist()},
+                    labels={'streamingmovies': 'Streaming Movies', 'count': 'Count of InternetService'})
+        # Display the figure in Streamlit
+        st.plotly_chart(fig)
 
 if __name__ == "__main__":
     with st.sidebar:
