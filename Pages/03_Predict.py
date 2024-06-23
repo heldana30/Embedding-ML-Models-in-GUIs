@@ -2,13 +2,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
+from io import StringIO
 import datetime
- 
-st.set_page_config(
-    page_title='Predict Customer Churn!',
-    page_icon='🔮',
-    layout='wide'
-)
+
+# Set page configuration
+st.set_page_config(page_title="Predict", page_icon="🔮",  layout="wide")
+
 if 'authentication_status' in st.session_state and st.session_state['authentication_status']:
     st.title("Predict Customer Churn!")
     
@@ -25,10 +24,10 @@ if 'authentication_status' in st.session_state and st.session_state['authenticat
         return pipeline
     
     
-    def select_model():
+    def select_model(key):
         col1, col2 = st.columns(2)
         with col1:
-            st.selectbox('Select a model', options=['Logistic Regression', 'AdaBoost'], key='selected_model')
+            st.selectbox('Select a model', options=['Logistic Regression', 'AdaBoost'], key=key)
         with col2:
             pass
     
@@ -75,12 +74,6 @@ if 'authentication_status' in st.session_state and st.session_state['authenticat
         # Make a DataFrame
         df = pd.DataFrame(data)
     
-
-        # st.write(pipeline)
-        # st.write(st.session_state)
-        # # info = df.info()
-        # st.write(info)
-    
     
         # Define Probability and Prediction
         pred = pipeline.predict(df)
@@ -108,7 +101,7 @@ if 'authentication_status' in st.session_state and st.session_state['authenticat
     # Creating the form
     def display_form():
     
-        pipeline, encoder = select_model()
+        pipeline, encoder = select_model(key='selected_model')
     
         with st.form('input_features'):
     
@@ -143,26 +136,67 @@ if 'authentication_status' in st.session_state and st.session_state['authenticat
     
     
     if __name__ == '__main__':
+
+        tab1, tab2 = st.tabs(['predict', 'bulk predict'])
+ 
+        with tab1:
+            display_form()
+            final_prediction = st.session_state['prediction']
+            final_probability = st.session_state['probability']
     
-    
-        display_form()
-        final_prediction = st.session_state['prediction']
-        final_probability = st.session_state['probability']
-    
-        if final_prediction is None:
-            st.write('Predictions show here!')
-            st.divider()
-        else:
-            if final_prediction.lower() == 'yes':
-                # st.markdown(f'## Churn: {final_prediction}')
-                st.markdown(f'### Customer will leave 😟.')
-                st.markdown(f'## Probability: {final_probability:.2f}%')
-                
+            if final_prediction is None:
+                st.write('Predictions show here!')
+                st.divider()
             else:
-                # st.markdown(f'## Churn: {final_prediction}')
-                st.markdown(f'### Customer will stay 😊.')
-                st.markdown(f'## Probability: {final_probability:.2f}%')
+                if final_prediction.lower() == 'yes':
+                    # st.markdown(f'## Churn: {final_prediction}')
+                    st.markdown(f'### Customer will leave 😞.')
+                    st.markdown(f'## Probability: {final_probability:.2f}%')
+                    
+                else:
+                    # st.markdown(f'## Churn: {final_prediction}')
+                    st.markdown(f'### Customer will stay 😊.')
+                    st.markdown(f'## Probability: {final_probability:.2f}%')
+        
                 
+
+        with tab2:
+            pipeline, encoder = select_model(key='selected_model_bulk')
+            # File uploader
+            uploaded_file = st.file_uploader("Choose a CSV or Excel File", type=['csv', 'xls', 'xlsx'])
+            if uploaded_file is not None:
+                file_extension = uploaded_file.name.split('.')[-1]
+
+                if file_extension == 'csv':
+                    df = pd.read_csv(uploaded_file)
+                else:
+                    df = pd.read_excel(uploaded_file)
+
+                st.write(df)
+
+                # Dropping the customer id column
+                df.drop('customerID', axis=1, inplace=True)
+                # Changing the column titles to lower case
+                df.columns = df.columns.str.lower()
+                # Changing the totalcharges column to numeric form
+                df['totalcharges'] = pd.to_numeric(df['totalcharges'], errors='coerce')
+
+                pred = pipeline.predict(df)
+                prediction = encoder.inverse_transform(pred)
+                
+                probability = pipeline.predict_proba(df) * 100
+                probability = pd.DataFrame(probability)
+                probability_pred = probability.copy()
+                probability_pred[2] = pred
+                
+                def select_probability(row):
+                    return row[0] if int(row[2]) == 0 else row[1]
+
+                probability = probability_pred.apply(lambda row: select_probability(row), axis=1)
+                df['churn'] = prediction
+                df['probability'] = probability
+                st.subheader("The Dataframe with predicted churn")
+                st.write(df)
+
 else:
     st.warning('Please login to access this page')
-    # st.write(st.session_state)

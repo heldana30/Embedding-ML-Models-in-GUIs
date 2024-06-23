@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 from streamlit_modal import Modal
 import os
-import yaml
-from yaml.loader import SafeLoader
-import streamlit_authenticator as stauth
 
 # Set page configuration
 st.set_page_config(page_title="Data", page_icon = '🗄️', layout="wide")
