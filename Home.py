@@ -94,48 +94,66 @@ if st.session_state['authentication_status']:
     st.markdown('<div class="slide-in-right-animation"><h2>About This App</h2></div>', unsafe_allow_html=True)
     st.markdown("""
         <div class="slide-in-left-animation">
-            <p>The <span class="slide-in-bottom-animation">Customer Churn Prediction App</span> is designed to help businesses in the telecommunications industry predict whether a customer is likely to churn (leave the service). By leveraging machine learning techniques, this app provides valuable insights into customer behavior, allowing companies to take proactive measures to improve customer retention.</p>
+            <p><span class="slide-in-bottom-animation">Welcome to the Customer Churn Prediction Application.</span> This tool is designed to help businesses in the telecommunications industry understand and predict customer churn. By leveraging advanced machine learning models, the application provides insights into customer behavior, identifies at-risk customers, and aids in the development of targeted retention strategies. This Home page serves as an entry point to the various features and functionalities offered by the application.</p>
         </div>
     """, unsafe_allow_html=True)
 
-    # Create columns for Key Features, How It Works, and Benefits
-    col1, col2, col3 = st.columns(3)
+    # # Create columns for Key Features, How It Works
+    # col1, col2= st.columns(2)
 
-    # Key Features with slide-in-right animation
-    with col1:
-        st.markdown('<div class="zoom-in-animation">', unsafe_allow_html=True)
-        st.markdown("## Key Features")
-        st.markdown("""
-        - **Model Training:** Train various machine learning models, such as Logistic Regression, Random Forest, and XGBoost, to predict customer churn.
-        - **Feature Importance:** Analyze feature importances to understand the drivers of customer churn.
-        - **User-Friendly Interface:** Interact with the app through an intuitive and engaging user interface.
+    # # Key Features with slide-in-right animation
+    # with col1:
+    st.markdown('<div class="zoom-in-animation">', unsafe_allow_html=True)
+    st.markdown("## Key Features")
+    st.markdown("""
+        - **Data Exploration:** The Data page allows users to explore the customer churn dataset. Users can view detailed descriptions of each column, filter data based on specific criteria, and get a comprehensive understanding of the dataset's structure.
+        - **Interactive Dashboard:** The Dashboard page offers a variety of visualizations and key performance indicators (KPIs) to help users analyze customer churn data. The interactive charts and graphs enable users to uncover trends and patterns that influence customer churn.
+        - **Customer Churn Prediction:** On the Predict page, users can input customer details to predict the likelihood of churn. The page supports both individual predictions and bulk predictions via CSV or Excel file uploads. Users can select from multiple pre-trained machine learning models to generate predictions.
+        - **Historical Predictions:** The History page provides a log of all past predictions. This feature allows users to review previous predictions, analyze trends over time, and assess the performance of different predictive models.     
         """)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)    
 
-    # How It Works with slide-in-bottom animation
-    with col2:
-        st.markdown('<div class="slide-in-bottom-animation">', unsafe_allow_html=True)
-        st.markdown("## How It Works")
-        st.markdown("""
-        1. **Data Collection:** Gather customer data from various sources.
-        2. **Data Preprocessing:** Clean and preprocess the data for model training.
-        3. **Model Training:** Train multiple machine learning models to predict churn.
-        4. **Model Evaluation:** Evaluate model performance using various metrics.
-        5. **Deployment:** Deploy the best-performing model to make real-time predictions.
+    # # How It Works with slide-in-bottom animation
+    # with col2:
+    st.markdown('<div class="slide-in-bottom-animation">', unsafe_allow_html=True)
+    st.markdown("## How It Works")
+    st.markdown("""
+        
+        1. **Data Loading and Exploration:**
+           - `Data Page:` Loading the Dataset: Loads the customer churn dataset (CSV) into a Pandas DataFrame.
+           - `Exploration Tools:` Users can explore the dataset, view column descriptions, and filter data by type (numeric or categorical).
+        
+        2. **Interactive Dashboard:**
+           - `Visual Insights:` Provides visualizations to analyze customer churn data, showing KPIs and trends.
+           - `Filters and Customization:` Users can apply filters (e.g., Gender, Payment Method) to customize visualizations for deeper analysis.
+        
+        3. **Customer Churn Prediction:**
+           - `User Input:` Users input customer details like demographics and billing info.
+           - `Model Selection:` Loads pre-trained models (e.g., Logistic Regression, AdaBoost) for prediction.
+           - `Prediction:` Predicts churn likelihood and probability based on user input.
+           - `Bulk Prediction:` Allows batch processing by uploading CSV/Excel files with multiple customer records.
+        
+        4. **Historical Predictions:**
+           - `Record Keeping:` Logs all past predictions, including customer attributes, outcomes, probabilities, models used, and prediction times.
+           - `Analysis and Insights:` Users can review historical data to identify patterns and validate model consistency
+        
+        5. **Authentication and User Management:**
+           - `Secure Access:` Ensures only authenticated users can access sensitive data and tools.
+           - `Session Management:` Manages user sessions for a seamless and secure experience.
         """)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # Benefits with slide-in-top animation
-    with col3:
-        st.markdown('<div class="slide-in-top-animation">', unsafe_allow_html=True)
-        st.markdown("## Benefits")
-        st.markdown("""
-        - **Improve Customer Retention:** Identify at-risk customers and take proactive measures to retain them.
-        - **Optimize Marketing Strategies:** Tailor marketing efforts to target customers who are likely to churn.
-        - **Enhance Business Performance:** Reduce churn rates and increase customer lifetime value.
-        """)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="slide-in-top-animation">', unsafe_allow_html=True)
+    st.markdown("""
+    The Customer Churn Prediction Application is a comprehensive tool designed to help businesses reduce churn rates and improve customer retention. By integrating data exploration, interactive dashboards, predictive modeling, and historical analysis, the application provides a robust framework for understanding and addressing customer churn. Explore the features and functionalities of this application to gain actionable insights and make data-driven decisions for your business        """)
+    st.markdown('</div>', unsafe_allow_html=True)
 
+
+    st.header("About the Developer")
+    st.write("**Name:** Heldana Natnael")
+    st.write("**Background:** Expert in data science, machine learning, and software development.")
+    st.write("**Contact:** www.linkedin.com/in/heldana-n")
+    
     # Footer
     st.markdown("""
         ---

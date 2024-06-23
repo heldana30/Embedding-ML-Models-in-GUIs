@@ -314,12 +314,6 @@ if 'authentication_status' in st.session_state and st.session_state['authenticat
 
 
     # 5.4 Comparative Bar Graphs
-        #Define function to add Data Labels
-        def add_data_labels(ax):
-            for p in ax.patches:
-                ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), 
-                        ha='center', va='baseline', fontsize=10, color='black', xytext=(0, 1), 
-                        textcoords='offset points')
                 
         st.header("Distribution of Churn by Demography")
 
