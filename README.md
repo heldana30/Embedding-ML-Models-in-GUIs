@@ -72,7 +72,8 @@ Embedding-ML-Models-in-GUIs
 
 | Topic                    | Link                                      |
 |--------------------------|-------------------------------------------|
-| Detailed Project Article | [Read the full article here](https://medium.com/@nheldana8/) |
+| Detailed Project Article | [Read the full article here](https://medium.com/@nheldana8/embedding-ml-models-in-guis-8dfd2097d12e) |
+| Published Application | [Access Published Application On Render](https://embedding-ml-models-in-guis-1.onrender.com) |
 
 
 ## 👥 Author <a name="authors"></a>
