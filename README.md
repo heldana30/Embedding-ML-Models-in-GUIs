@@ -47,7 +47,8 @@ Embedding-ML-Models-in-GUIs
 3. Create a virtual environment and activate it:
    ```bash
    python -m venv venv
-   source venv/bin/activate   # On Windows use `venv\Scripts\activate`
+   venv\Scripts\activate  # On MAC use `source venv/bin/activate `
+   
    ```
 4. Install the required packages:
    ```bash
