@@ -1,0 +1,8 @@
+,gender,seniorcitizen,partner,dependents,tenure,paperlessbilling,paymentmethod,monthlycharges,totalcharges,phoneservice,multiplelines,internetservice,onlinesecurity,onlinebackup,deviceprotection,techsupport,streamingtv,streamingmovies,contract,prediction,probability,time_of_prediction,model_used
+0,Male,0,Yes,Yes,9,Yes,Electronic check,1100.0,1200.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,One year,No,99.99980268824173,2024-06-21,Logistic Regression
+0,Male,0,Yes,Yes,9,Yes,Electronic check,1100.0,1200.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,One year,No,50.60057692419544,2024-06-21,AdaBoost
+0,Male,1,Yes,Yes,0,Yes,Electronic check,20.0,50.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,79.77196675840497,2024-06-21,Logistic Regression
+0,Male,1,Yes,Yes,0,Yes,Electronic check,0.0,0.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,83.20278928918823,2024-06-23,Logistic Regression
+0,Male,1,Yes,Yes,0,Yes,Electronic check,90.0,100.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,62.70554372171433,2024-06-23,Logistic Regression
+0,Male,1,Yes,Yes,5,Yes,Electronic check,90.0,190.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,55.61549359738424,2024-06-23,Logistic Regression
+0,Male,1,Yes,Yes,72,Yes,Electronic check,100.0,200.0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,98.74075120190413,2024-06-23,Logistic Regression

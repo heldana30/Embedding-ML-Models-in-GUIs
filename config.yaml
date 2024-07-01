@@ -1,0 +1,13 @@
+credentials:
+  usernames:
+    guestuser:
+      email: guestuser@gmail.com
+      name: Guest User
+      password: 'P@55w0rd'  # This should be a hashed password
+cookie:
+  expiry_days: 0
+  key: cookie_signature_key
+  name: cookie_name
+preauthorized:
+  usernames:
+  - guestuser
